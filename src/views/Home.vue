@@ -1,18 +1,25 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="flex flex-col items-center">
+    <img alt="Vue logo" src="../assets/logo.png" width="120px" class="mt-4" />
+    <h1 class="text-green-500 text-3xl font-black">Welcome to VChat App</h1>
+    <User v-slot:user="{ user }">
+      <Profile v-if="user" :user="user" />
+      <Login v-else />
+    </User>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Login from "@/components/Login";
+import User from "@/components/User";
+import Profile from "@/components/Profile";
 
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HelloWorld
+    Login,
+    User,
+    Profile
   }
-}
+};
 </script>
